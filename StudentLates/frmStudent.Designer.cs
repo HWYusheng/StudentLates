@@ -35,6 +35,7 @@
             this.dtpDob = new System.Windows.Forms.DateTimePicker();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.cmbStudentID = new System.Windows.Forms.ComboBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblfirstName
@@ -93,12 +94,24 @@
             this.cmbStudentID.Name = "cmbStudentID";
             this.cmbStudentID.Size = new System.Drawing.Size(121, 21);
             this.cmbStudentID.TabIndex = 6;
+            this.cmbStudentID.SelectedIndexChanged += new System.EventHandler(this.cmbStudentID_SelectedIndexChanged);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(423, 198);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 7;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frmStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.cmbStudentID);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.dtpDob);
@@ -123,5 +136,6 @@
         private System.Windows.Forms.DateTimePicker dtpDob;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.ComboBox cmbStudentID;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

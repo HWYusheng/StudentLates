@@ -48,7 +48,46 @@ namespace StudentLates
                 cmd.ExecuteNonQuery();
             }
         }
+        public Student GetFilteredStudent(int studentID)
+        {
+            Student student = null;
+            string sql = "SELECT * FROM tblStudent WHERE studentid = ?"; // ? is a placeholder for parameters in OleDb
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@studentid", studentID); // add the parameter value
 
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        student = new Student
+                        {
+                            StudentID = reader.GetInt32(0), // the first column is StudentID
+                            FirstName = reader.GetString(1), // the second column is FirstName
+                            LastName = reader.GetString(2), // the third column is LastName
+                            StudentDOB = reader.GetDateTime(3) // the fourth column is StudentDOB
+                        };
+                    }
+                }
+            }
 
+            return student;
+        }
+        public void UpdateStudent(Student student)
+        {
+            string sql = "UPDATE tblStudent SET FirstName = ?, LastName = ?, StudentDOB = ? WHERE StudentID = ?";
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@FirstName", student.FirstName);
+                cmd.Parameters.AddWithValue("@LastName", student.LastName);
+                cmd.Parameters.AddWithValue("@StudentDOB", student.StudentDOB.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@StudentID", student.StudentID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
