@@ -68,5 +68,19 @@ namespace StudentLates
             studentRepositary.UpdateStudent(student);
             UpdateForms();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to delete this item??",
+                                                 "Confirm Delete!!",
+                                                 MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                // If 'Yes', do something here.
+                studentRepositary.Delete(Convert.ToInt32(cmbStudentID.SelectedValue));
+                UpdateForms();
+            }
+
+        }
     }
 }

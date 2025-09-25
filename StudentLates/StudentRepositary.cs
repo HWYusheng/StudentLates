@@ -89,5 +89,16 @@ namespace StudentLates
                 cmd.ExecuteNonQuery();
             }
         }
+        public void Delete(int studentID)
+        {
+            string sql = "DELETE FROM tblStudent WHERE StudentID = ?";
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@StudentID", studentID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

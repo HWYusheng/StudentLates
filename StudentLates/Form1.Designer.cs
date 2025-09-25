@@ -57,7 +57,7 @@
             this.lstVStudents.HideSelection = false;
             this.lstVStudents.Location = new System.Drawing.Point(16, 42);
             this.lstVStudents.Name = "lstVStudents";
-            this.lstVStudents.Size = new System.Drawing.Size(280, 97);
+            this.lstVStudents.Size = new System.Drawing.Size(271, 188);
             this.lstVStudents.TabIndex = 1;
             this.lstVStudents.UseCompatibleStateImageBehavior = false;
             this.lstVStudents.View = System.Windows.Forms.View.Details;
@@ -82,11 +82,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(104, 185);
+            this.button1.Location = new System.Drawing.Point(16, 248);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(85, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
+            this.button1.Text = "Student Form";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
