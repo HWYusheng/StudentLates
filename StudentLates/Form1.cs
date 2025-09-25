@@ -44,5 +44,11 @@ namespace StudentLates
             frmStudent studentForm = new frmStudent();
             studentForm.Show();
         }
+
+        private void btnStudentLate_Click(object sender, EventArgs e)
+        {
+            frmLateBasic lateForm = new frmLateBasic();
+            lateForm.Show();
+        }
     }
 }
