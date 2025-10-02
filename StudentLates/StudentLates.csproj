@@ -64,6 +64,7 @@
     <Compile Include="frmStudent.Designer.cs">
       <DependentUpon>frmStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="LateRepositary.cs" />
     <Compile Include="Model\Late.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
