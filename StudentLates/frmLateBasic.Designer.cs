@@ -99,6 +99,7 @@
             this.dtpDOL.Name = "dtpDOL";
             this.dtpDOL.Size = new System.Drawing.Size(114, 20);
             this.dtpDOL.TabIndex = 8;
+            this.dtpDOL.ValueChanged += new System.EventHandler(this.dtpDOL_ValueChanged);
             // 
             // cmbPeriod
             // 

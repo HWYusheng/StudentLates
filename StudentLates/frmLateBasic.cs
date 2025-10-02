@@ -36,8 +36,8 @@ namespace StudentLates
         private void btnSaveLate_Click(object sender, EventArgs e)
         {
             lateRepositary.AddLate(new Late {
-                StudentID = Convert.ToInt32(cmbStudentID.ValueMember),
-                Period = Convert.ToInt32(cmbPeriod.SelectedValue),
+                StudentID = Convert.ToInt32(cmbStudentID.SelectedValue),
+                Period = Convert.ToInt32(cmbPeriod.Text),
                 DateOfLate = dtpDOL.Value,
                 MinsLate = Convert.ToInt32(txtMinsLate.Text)
             });
@@ -45,6 +45,12 @@ namespace StudentLates
 
         private void cmbPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Student student = studentRepositary.GetFilteredStudent(Convert.ToInt32(cmbStudentID.SelectedValue));
+        }
+
+        private void dtpDOL_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
