@@ -28,7 +28,7 @@ namespace StudentLates
             cmbStudentID.DisplayMember = "FullName";
             cmbStudentID.ValueMember = "StudentID";
             cmbStudentID.DataSource = students;
-            
+            AddButtons();
         }
 
         private void cmbStudentID_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,10 +63,51 @@ namespace StudentLates
         {
 
         }
+        private void AddButtons()
+        {
+            int count = 0;
+            var students = studentRepositary.GetStudents();
+            foreach (var item in students)
+            {
+                Button btn = new Button();
+                btn.BackColor = Color.Lime;
+                btn.ForeColor = Color.Black;
+                btn.Size = new Size(100, 90);
+                btn.Visible = true;
+                btn.Tag = item.StudentID; // Store the StudentID in the Tag property for later use
+                btn.Text = item.FullName;
+                btn.Name = "btn_ " + count;
+                count++;
+                btn.Click += Btn_Click; // type btn.Click += <tab><tab> to auto generate the event handler
+                flpStudents.Controls.Add(btn);
+            }
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button buttonPressed = (Button)sender;
+            try
+            {
+                lateRepositary.AddLate(new Late
+                {
+                    StudentID = Convert.ToInt32(buttonPressed.Tag),
+                });
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Late student wasn't added.");
+            }
+        }
 
         private void labelTitle_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void flpStudents_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

@@ -87,5 +87,6 @@ namespace StudentLates
                 minsLate = minsFrom9am - 350;
             }
         }
+
     }
 }

@@ -32,6 +32,7 @@
             this.lblStudentName = new System.Windows.Forms.Label();
             this.cmbStudentID = new System.Windows.Forms.ComboBox();
             this.btnSaveLate = new System.Windows.Forms.Button();
+            this.flpStudents = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -48,7 +49,7 @@
             // lblStudentName
             // 
             this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Location = new System.Drawing.Point(127, 61);
+            this.lblStudentName.Location = new System.Drawing.Point(579, 413);
             this.lblStudentName.Name = "lblStudentName";
             this.lblStudentName.Size = new System.Drawing.Size(75, 13);
             this.lblStudentName.TabIndex = 1;
@@ -57,7 +58,7 @@
             // cmbStudentID
             // 
             this.cmbStudentID.FormattingEnabled = true;
-            this.cmbStudentID.Location = new System.Drawing.Point(214, 61);
+            this.cmbStudentID.Location = new System.Drawing.Point(674, 405);
             this.cmbStudentID.Name = "cmbStudentID";
             this.cmbStudentID.Size = new System.Drawing.Size(114, 21);
             this.cmbStudentID.TabIndex = 10;
@@ -65,7 +66,7 @@
             // 
             // btnSaveLate
             // 
-            this.btnSaveLate.Location = new System.Drawing.Point(214, 114);
+            this.btnSaveLate.Location = new System.Drawing.Point(713, 361);
             this.btnSaveLate.Name = "btnSaveLate";
             this.btnSaveLate.Size = new System.Drawing.Size(75, 23);
             this.btnSaveLate.TabIndex = 11;
@@ -73,11 +74,20 @@
             this.btnSaveLate.UseVisualStyleBackColor = true;
             this.btnSaveLate.Click += new System.EventHandler(this.btnSaveLate_Click);
             // 
+            // flpStudents
+            // 
+            this.flpStudents.Location = new System.Drawing.Point(28, 64);
+            this.flpStudents.Name = "flpStudents";
+            this.flpStudents.Size = new System.Drawing.Size(679, 320);
+            this.flpStudents.TabIndex = 12;
+            this.flpStudents.Paint += new System.Windows.Forms.PaintEventHandler(this.flpStudents_Paint);
+            // 
             // frmLateBasic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.flpStudents);
             this.Controls.Add(this.btnSaveLate);
             this.Controls.Add(this.cmbStudentID);
             this.Controls.Add(this.lblStudentName);
@@ -96,5 +106,6 @@
         private System.Windows.Forms.Label lblStudentName;
         private System.Windows.Forms.ComboBox cmbStudentID;
         private System.Windows.Forms.Button btnSaveLate;
+        private System.Windows.Forms.FlowLayoutPanel flpStudents;
     }
 }
