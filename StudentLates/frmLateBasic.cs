@@ -18,6 +18,8 @@ namespace StudentLates
         {
             InitializeComponent();
             studentRepositary = new StudentRepositary();
+            lateRepositary = new LateRepositary();
+            
         }
 
         private void frmLateBasic_Load(object sender, EventArgs e)
@@ -26,6 +28,7 @@ namespace StudentLates
             cmbStudentID.DisplayMember = "FullName";
             cmbStudentID.ValueMember = "StudentID";
             cmbStudentID.DataSource = students;
+            
         }
 
         private void cmbStudentID_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,12 +38,20 @@ namespace StudentLates
 
         private void btnSaveLate_Click(object sender, EventArgs e)
         {
-            lateRepositary.AddLate(new Late {
-                StudentID = Convert.ToInt32(cmbStudentID.SelectedValue),
-                Period = Convert.ToInt32(cmbPeriod.Text),
-                DateOfLate = dtpDOL.Value,
-                MinsLate = Convert.ToInt32(txtMinsLate.Text)
-            });
+            try
+            {
+                lateRepositary.AddLate(new Late
+                {
+                    StudentID = Convert.ToInt32(cmbStudentID.SelectedValue),
+                });
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Late student wasn't added.");
+            }
+
+            
         }
 
         private void cmbPeriod_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,6 +60,11 @@ namespace StudentLates
         }
 
         private void dtpDOL_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelTitle_Click(object sender, EventArgs e)
         {
 
         }

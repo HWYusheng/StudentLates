@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StudentLates
 {
@@ -31,24 +33,30 @@ namespace StudentLates
                             MinsLate = reader.GetInt32(4) // the fourth column is MinsLate
                         };
                         studentsLate.Add(studentLate);
+                        
                     }
                 }
             }
             return studentsLate;
         }
 
-        public void AddLate(Late student)
+        public void AddLate(Late late)
         {
-            string sql = "INSERT INTO tblLate (StudentID, Period, DateOfLate, MinsLate) VALUES (?, ?, ?, ?)";
+            string sql = "INSERT INTO tblLate (StudentID, Period, DateOfLate, minsLate) VALUES (?, ?, ?, ?)";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
+
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@StudentID", student.StudentID);
-                cmd.Parameters.AddWithValue("@Period", student.Period);
-                cmd.Parameters.AddWithValue("@DateOfLate", student.DateOfLate.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("@MinsLate", student.MinsLate);
+                int per = 0, minsLate = 0;
+                GetPeriodAndMinsLate(ref per, ref minsLate);
+                cmd.Parameters.AddWithValue("@StudentID", late.StudentID);
+                cmd.Parameters.AddWithValue("@Period", per);
+                cmd.Parameters.AddWithValue("@DateOfLate", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@MinsLate", minsLate);
                 conn.Open();
                 cmd.ExecuteNonQuery();
+                MessageBox.Show($"Student ID {late.StudentID} is late {minsLate} for period {per}.");
+
             }
         }
         public void GetPeriodAndMinsLate(ref int period, ref int minsLate)
@@ -56,6 +64,7 @@ namespace StudentLates
             int minsFrom9am = 0;
             DateTime nineOclockDate = DateTime.Today; // the time at midnight this morning
             nineOclockDate = nineOclockDate.AddHours(9); // the date and time at 9:00am
+            DateTime DateOfLate = DateTime.Now;
             minsFrom9am = Convert.ToInt32((DateTime.Now - nineOclockDate).TotalMinutes);
             if (minsFrom9am > 0 && minsFrom9am < 89)
             {
@@ -66,8 +75,16 @@ namespace StudentLates
             {
                 period = 2;
                 minsLate = minsFrom9am - 110;
-
-
+            }
+            else if (minsFrom9am > 250 && minsFrom9am < 339)
+            {
+                period = 3;
+                minsLate = minsFrom9am - 250;
+            }
+            else if (minsFrom9am > 350 && minsFrom9am < 439)
+            {
+                period = 4;
+                minsLate = minsFrom9am - 350;
             }
         }
     }
