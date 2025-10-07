@@ -70,6 +70,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="StudentRepositary.cs" />
+    <Compile Include="UCLateStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLateStudent.Designer.cs">
+      <DependentUpon>UCLateStudent.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +94,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCLateStudent.resx">
+      <DependentUpon>UCLateStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
