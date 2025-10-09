@@ -39,7 +39,7 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(210, 21);
+            this.labelTitle.Location = new System.Drawing.Point(229, 9);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(135, 24);
             this.labelTitle.TabIndex = 0;
@@ -76,9 +76,9 @@
             // 
             // flpStudents
             // 
-            this.flpStudents.Location = new System.Drawing.Point(28, 64);
+            this.flpStudents.Location = new System.Drawing.Point(28, 48);
             this.flpStudents.Name = "flpStudents";
-            this.flpStudents.Size = new System.Drawing.Size(679, 320);
+            this.flpStudents.Size = new System.Drawing.Size(679, 336);
             this.flpStudents.TabIndex = 12;
             this.flpStudents.Paint += new System.Windows.Forms.PaintEventHandler(this.flpStudents_Paint);
             // 

@@ -35,31 +35,37 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(14, 16);
+            this.lblName.Location = new System.Drawing.Point(13, 19);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 13);
+            this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 0;
+            this.lblName.Text = "label1";
             // 
             // lblNumLates
             // 
             this.lblNumLates.AutoSize = true;
-            this.lblNumLates.Location = new System.Drawing.Point(14, 104);
+            this.lblNumLates.Location = new System.Drawing.Point(13, 45);
             this.lblNumLates.Name = "lblNumLates";
-            this.lblNumLates.Size = new System.Drawing.Size(0, 13);
+            this.lblNumLates.Size = new System.Drawing.Size(35, 13);
             this.lblNumLates.TabIndex = 1;
+            this.lblNumLates.Text = "label1";
+            this.lblNumLates.Click += new System.EventHandler(this.lblNumLates_Click);
             // 
             // UCLateStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.lblNumLates);
             this.Controls.Add(this.lblName);
             this.Name = "UCLateStudent";
+            this.Size = new System.Drawing.Size(280, 254);
             this.Load += new System.EventHandler(this.UCLateStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
 
         #endregion
 

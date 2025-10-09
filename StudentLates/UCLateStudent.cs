@@ -23,12 +23,14 @@ namespace StudentLates
 
         private void UCLateStudent_Load(object sender, EventArgs e)
         {
-            lblName.Text = StudentName;
-            lblNumLates.Text = NumberOfLates.ToString();
             if (NumberOfLates >= 2)
             {
                 this.BackColor = Color.Red;
             }
+            lblName.Text = StudentName;
+            //lblNumLates.Text = NumberOfLates.ToString();
+            lblNumLates.Text = "kjdshafkjhds";
+
         }
 
         public void UpdateControl()
@@ -37,5 +39,9 @@ namespace StudentLates
             UCLateStudent_Load(null, null);
         }
 
+        private void lblNumLates_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

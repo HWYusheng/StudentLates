@@ -81,6 +81,7 @@ namespace StudentLates
                 _UCLateStudent.Name = "UCStudentLate_" + count;
                 count++;
                 _UCLateStudent.Click += _UCLateStudent_Click; // type btn.Click += <tab><tab> to auto generate the event handler
+                _UCLateStudent.Update();
                 flpStudents.Controls.Add(_UCLateStudent);
             }
         }
@@ -108,9 +109,9 @@ namespace StudentLates
                 {
                     StudentID = Convert.ToInt32(buttonPressed.Tag),
                 });
-                buttonPressed.NumberOfLates = GetNumberOfLates(buttonPressed.StudentID);
-
-                buttonPressed.UpdateControl();
+                //buttonPressed.NumberOfLates = GetNumberOfLates(buttonPressed.StudentID);
+                buttonPressed.NumberOfLates++;
+                buttonPressed.Update();
             }
             catch (Exception)
             {

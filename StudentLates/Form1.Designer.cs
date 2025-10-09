@@ -58,7 +58,7 @@
             this.lstVStudents.HideSelection = false;
             this.lstVStudents.Location = new System.Drawing.Point(16, 42);
             this.lstVStudents.Name = "lstVStudents";
-            this.lstVStudents.Size = new System.Drawing.Size(271, 188);
+            this.lstVStudents.Size = new System.Drawing.Size(310, 188);
             this.lstVStudents.TabIndex = 1;
             this.lstVStudents.UseCompatibleStateImageBehavior = false;
             this.lstVStudents.View = System.Windows.Forms.View.Details;
@@ -80,6 +80,7 @@
             // ColumnHeader3
             // 
             this.ColumnHeader3.Text = "DOB";
+            this.ColumnHeader3.Width = 103;
             // 
             // button1
             // 
