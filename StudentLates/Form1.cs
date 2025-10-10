@@ -14,10 +14,12 @@ namespace StudentLates
     public partial class Form1 : Form
     {
         private StudentRepositary studentRepositary; // declares studentRepositary though not instantiated yet
+        private LateRepositary lateRepositary;
         public Form1()
         {
             InitializeComponent();
             studentRepositary = new StudentRepositary(); // instantiate the studentRepositary object
+            lateRepositary = new LateRepositary();
         }
        
         public void DisplayStudents() // needs to be public so can be accessed from FrmStudent
@@ -33,7 +35,20 @@ namespace StudentLates
                 lstVStudents.Items.Add(item);
             }
         }
-
+        public void DisplayLates() // needs to be public so can be accessed from FrmStudent
+        {
+            var lates = lateRepositary.GetLates();
+            var student = new Student();
+            lstVStudents.Items.Clear(); // clear the ListView before adding new items
+            foreach (var late in lates)
+            {
+                ListViewItem item = new ListViewItem(late.StudentID.ToString());
+                item.SubItems.Add(late.DateOfLate.ToShortDateString()); // subitems are used to add additional columns in ListView
+                item.SubItems.Add(late.MinsLate.ToString());
+                item.SubItems.Add(late.Period.ToString());
+                lstVStudents.Items.Add(item);
+            }
+        }
         private void Form1_Load_1(object sender, EventArgs e)
         {
             DisplayStudents(); // 

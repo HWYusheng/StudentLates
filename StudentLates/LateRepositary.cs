@@ -12,7 +12,7 @@ namespace StudentLates
     internal class LateRepositary
     {
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\sLatesDB.accdb";
-        public List<Late> GetLate()
+        public List<Late> GetLates()
         {
             List<Late> studentsLate = new List<Late>();
             string sql = "SELECT * FROM tblLate";
@@ -39,7 +39,19 @@ namespace StudentLates
             }
             return studentsLate;
         }
-
+        public int GetNumberOfLates(int studentID)
+        {
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\sLatesDB.accdb";
+            string sql = $"SELECT COUNT(*) FROM tblLate WHERE StudentID = {studentID}";
+            int NumsOfLates;
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                NumsOfLates = (int)cmd.ExecuteScalar();
+            }
+            return NumsOfLates;
+        }
         public void AddLate(Late late)
         {
             string sql = "INSERT INTO tblLate (StudentID, Period, DateOfLate, minsLate) VALUES (?, ?, ?, ?)";

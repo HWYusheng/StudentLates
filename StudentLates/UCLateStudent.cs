@@ -28,8 +28,7 @@ namespace StudentLates
                 this.BackColor = Color.Red;
             }
             lblName.Text = StudentName;
-            //lblNumLates.Text = NumberOfLates.ToString();
-            lblNumLates.Text = "kjdshafkjhds";
+            lblNumLates.Text = NumberOfLates.ToString();
 
         }
 

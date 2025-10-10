@@ -36,6 +36,12 @@
             this.ColumnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.btnStudentLate = new System.Windows.Forms.Button();
+            this.lstVLates = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -102,11 +108,52 @@
             this.btnStudentLate.UseVisualStyleBackColor = true;
             this.btnStudentLate.Click += new System.EventHandler(this.btnStudentLate_Click);
             // 
+            // lstVLates
+            // 
+            this.lstVLates.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lstVLates.FullRowSelect = true;
+            this.lstVLates.HideSelection = false;
+            this.lstVLates.Location = new System.Drawing.Point(352, 42);
+            this.lstVLates.Name = "lstVLates";
+            this.lstVLates.Size = new System.Drawing.Size(369, 188);
+            this.lstVLates.TabIndex = 4;
+            this.lstVLates.UseCompatibleStateImageBehavior = false;
+            this.lstVLates.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "StudentID";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Student Name";
+            this.columnHeader5.Width = 89;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Date of Late";
+            this.columnHeader6.Width = 95;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Mins Late";
+            this.columnHeader7.Width = 61;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Period";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lstVLates);
             this.Controls.Add(this.btnStudentLate);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstVStudents);
@@ -129,6 +176,12 @@
         private System.Windows.Forms.ColumnHeader ColumnHeader3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnStudentLate;
+        private System.Windows.Forms.ListView lstVLates;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }
 

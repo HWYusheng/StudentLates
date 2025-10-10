@@ -77,7 +77,7 @@ namespace StudentLates
                 _UCLateStudent.Visible = true;
                 _UCLateStudent.Tag = item.StudentID; // Store the StudentID in the Tag property for later use
                 _UCLateStudent.StudentName = item.FullName;
-                _UCLateStudent.NumberOfLates = GetNumberOfLates(item.StudentID);
+                _UCLateStudent.NumberOfLates = lateRepositary.GetNumberOfLates(item.StudentID);
                 _UCLateStudent.Name = "UCStudentLate_" + count;
                 count++;
                 _UCLateStudent.Click += _UCLateStudent_Click; // type btn.Click += <tab><tab> to auto generate the event handler
