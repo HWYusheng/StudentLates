@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="LateRepositary.cs" />
     <Compile Include="Model\Late.cs" />
+    <Compile Include="Model\LatesWithStudentNames.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Student.cs" />

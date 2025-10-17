@@ -37,21 +37,27 @@ namespace StudentLates
         }
         public void DisplayLates() // needs to be public so can be accessed from FrmStudent
         {
-            var lates = lateRepositary.GetLates();
-            var student = new Student();
-            lstVStudents.Items.Clear(); // clear the ListView before adding new items
-            foreach (var late in lates)
+            var latesWithStudentName = lateRepositary.GetLatesWithStudentNames();
+            lstVLates.Items.Clear(); // clear the ListView before adding new items
+            foreach (var late in latesWithStudentName)
             {
                 ListViewItem item = new ListViewItem(late.StudentID.ToString());
+                item.SubItems.Add(late.FirstName + " " + late.LastName);
                 item.SubItems.Add(late.DateOfLate.ToShortDateString()); // subitems are used to add additional columns in ListView
                 item.SubItems.Add(late.MinsLate.ToString());
                 item.SubItems.Add(late.Period.ToString());
-                lstVStudents.Items.Add(item);
+                lstVLates.Items.Add(item);
             }
         }
         private void Form1_Load_1(object sender, EventArgs e)
         {
             DisplayStudents(); // 
+
+            var students = studentRepositary.GetStudents();
+            cmbStudentID.DisplayMember = "FullName";
+            cmbStudentID.ValueMember = "StudentID";
+            cmbStudentID.DataSource = students;
+            DisplayLates();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -64,6 +70,29 @@ namespace StudentLates
         {
             frmLateBasic lateForm = new frmLateBasic();
             lateForm.Show();
+        }
+
+        private void cmbStudentID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbStudentID.SelectedValue != null)
+            {
+                int studentID = Convert.ToInt32(cmbStudentID.SelectedValue);
+                var latesWithStudentName = lateRepositary.GetLatesWithStudentNames(studentID);
+                lstVLates.Items.Clear(); // clear the ListView before adding new items
+                foreach (var late in latesWithStudentName)
+                {
+                    ListViewItem item = new ListViewItem(late.StudentID.ToString());
+                    item.SubItems.Add(late.FirstName + " " + late.LastName);
+                    item.SubItems.Add(late.DateOfLate.ToShortDateString()); // subitems are used to add additional columns in ListView
+                    item.SubItems.Add(late.MinsLate.ToString());
+                    item.SubItems.Add(late.Period.ToString());
+                    lstVLates.Items.Add(item);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Student not found.");
+            }
         }
     }
 }

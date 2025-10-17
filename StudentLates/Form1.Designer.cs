@@ -42,6 +42,8 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmbStudentID = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -148,11 +150,31 @@
             // 
             this.columnHeader8.Text = "Period";
             // 
+            // cmbStudentID
+            // 
+            this.cmbStudentID.FormattingEnabled = true;
+            this.cmbStudentID.Location = new System.Drawing.Point(409, 248);
+            this.cmbStudentID.Name = "cmbStudentID";
+            this.cmbStudentID.Size = new System.Drawing.Size(121, 21);
+            this.cmbStudentID.TabIndex = 7;
+            this.cmbStudentID.SelectedIndexChanged += new System.EventHandler(this.cmbStudentID_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(349, 253);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Search";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbStudentID);
             this.Controls.Add(this.lstVLates);
             this.Controls.Add(this.btnStudentLate);
             this.Controls.Add(this.button1);
@@ -182,6 +204,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ComboBox cmbStudentID;
+        private System.Windows.Forms.Label label2;
     }
 }
 

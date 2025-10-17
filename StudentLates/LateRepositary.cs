@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentLates.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Data.SqlTypes;
@@ -12,10 +13,11 @@ namespace StudentLates
     internal class LateRepositary
     {
         string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\sLatesDB.accdb";
-        public List<Late> GetLates()
+        public List<LatesWithStudentNames> GetLatesWithStudentNames()
         {
-            List<Late> studentsLate = new List<Late>();
-            string sql = "SELECT * FROM tblLate";
+            List<LatesWithStudentNames> studentsLate = new List<LatesWithStudentNames>();
+            string sql = "SELECT tblStudent.studentID, tblStudent.firstName, tblStudent.lastName, tblLate.period, tblLate.dateOfLate, tblLate.minsLate" 
+                           + "" + " FROM (tblLate INNER JOIN tblStudent ON tblLate.StudentID = tblStudent.StudentID)";
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             using (OleDbCommand cmd = new OleDbCommand(sql, conn))
             {
@@ -24,13 +26,14 @@ namespace StudentLates
                 {
                     while (reader.Read())
                     {
-                        Late studentLate = new Late
+                        LatesWithStudentNames studentLate = new LatesWithStudentNames
                         {
-                            LateID = reader.GetInt32(0), // the first column is LateID
-                            StudentID = reader.GetInt32(1), // the second column is StudentID
-                            Period = reader.GetInt32(2), // the third column is Period
-                            DateOfLate = reader.GetDateTime(3), // the fourth column is DateOfLate
-                            MinsLate = reader.GetInt32(4) // the fourth column is MinsLate
+                            StudentID = reader.GetInt32(0), // the first column is LateID
+                            FirstName = reader.GetString(1), // the second column is StudentID
+                            LastName = reader.GetString(2),
+                            Period = reader.GetInt32(3), // the third column is Period
+                            DateOfLate = reader.GetDateTime(4), // the fourth column is DateOfLate
+                            MinsLate = reader.GetInt32(5) // the fourth column is MinsLate
                         };
                         studentsLate.Add(studentLate);
                         
@@ -100,5 +103,35 @@ namespace StudentLates
             }
         }
 
+        internal IEnumerable<LatesWithStudentNames> GetLatesWithStudentNames(int studentID)
+        {
+            List<LatesWithStudentNames> studentsLate = new List<LatesWithStudentNames>();
+            string sql = "SELECT tblStudent.studentID, tblStudent.firstName, tblStudent.lastName, tblLate.period, tblLate.dateOfLate, tblLate.minsLate"
+                           + "" + " FROM (tblLate INNER JOIN tblStudent ON tblLate.StudentID = tblStudent.StudentID)" + "" + "WHERE tblStudent.StudentID = ?";
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@studentid", studentID);
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LatesWithStudentNames studentLate = new LatesWithStudentNames
+                        {
+                            StudentID = reader.GetInt32(0), // the first column is LateID
+                            FirstName = reader.GetString(1), // the second column is StudentID
+                            LastName = reader.GetString(2),
+                            Period = reader.GetInt32(3), // the third column is Period
+                            DateOfLate = reader.GetDateTime(4), // the fourth column is DateOfLate
+                            MinsLate = reader.GetInt32(5) // the fourth column is MinsLate
+                        };
+                        studentsLate.Add(studentLate);
+
+                    }
+                }
+            }
+            return studentsLate;
+        }
     }
 }
