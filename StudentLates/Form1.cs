@@ -94,5 +94,16 @@ namespace StudentLates
                 MessageBox.Show("Student not found.");
             }
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
+        }
+        double average;
+        private void averageLateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            double aveLate = lateRepositary.GetAverageLate();
+            MessageBox.Show($"The average late mins for all students is {aveLate:N2}");
+        }
     }
 }

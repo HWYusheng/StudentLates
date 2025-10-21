@@ -103,6 +103,20 @@ namespace StudentLates
             }
         }
 
+        public double GetAverageLate()
+        {
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\sLatesDB.accdb";
+            string sql = $"SELECT AVG(minsLate) FROM tblLate";
+            double NumsOfLates;
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                NumsOfLates = (double)cmd.ExecuteScalar();
+            }
+            return NumsOfLates;
+        }
+
         internal IEnumerable<LatesWithStudentNames> GetLatesWithStudentNames(int studentID)
         {
             List<LatesWithStudentNames> studentsLate = new List<LatesWithStudentNames>();

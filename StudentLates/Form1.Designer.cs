@@ -44,12 +44,16 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbStudentID = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.statsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.averageLateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(121, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
@@ -168,6 +172,33 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Search";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "Stats";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // statsToolStripMenuItem
+            // 
+            this.statsToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.statsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.averageLateToolStripMenuItem});
+            this.statsToolStripMenuItem.Name = "statsToolStripMenuItem";
+            this.statsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.statsToolStripMenuItem.Text = "Stats";
+            // 
+            // averageLateToolStripMenuItem
+            // 
+            this.averageLateToolStripMenuItem.Name = "averageLateToolStripMenuItem";
+            this.averageLateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.averageLateToolStripMenuItem.Text = "Average Late";
+            this.averageLateToolStripMenuItem.Click += new System.EventHandler(this.averageLateToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,9 +211,13 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstVStudents);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +241,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ComboBox cmbStudentID;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem statsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem averageLateToolStripMenuItem;
     }
 }
 
