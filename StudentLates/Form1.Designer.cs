@@ -158,6 +158,8 @@
             // cmbStudentID
             // 
             this.cmbStudentID.FormattingEnabled = true;
+            this.cmbStudentID.Items.AddRange(new object[] {
+            "(All)"});
             this.cmbStudentID.Location = new System.Drawing.Point(409, 248);
             this.cmbStudentID.Name = "cmbStudentID";
             this.cmbStudentID.Size = new System.Drawing.Size(121, 21);

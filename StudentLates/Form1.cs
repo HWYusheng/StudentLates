@@ -54,6 +54,11 @@ namespace StudentLates
             DisplayStudents(); // 
 
             var students = studentRepositary.GetStudents();
+            Student blank = new Student();
+            blank.FirstName = "[Show";
+            blank.LastName = "all]";
+            blank.StudentID = -1;
+            students.Insert(0, blank);
             cmbStudentID.DisplayMember = "FullName";
             cmbStudentID.ValueMember = "StudentID";
             cmbStudentID.DataSource = students;
@@ -76,18 +81,26 @@ namespace StudentLates
         {
             if (cmbStudentID.SelectedValue != null)
             {
-                int studentID = Convert.ToInt32(cmbStudentID.SelectedValue);
-                var latesWithStudentName = lateRepositary.GetLatesWithStudentNames(studentID);
-                lstVLates.Items.Clear(); // clear the ListView before adding new items
-                foreach (var late in latesWithStudentName)
+                if (Convert.ToInt32(cmbStudentID.SelectedValue) == -1)
                 {
-                    ListViewItem item = new ListViewItem(late.StudentID.ToString());
-                    item.SubItems.Add(late.FirstName + " " + late.LastName);
-                    item.SubItems.Add(late.DateOfLate.ToShortDateString()); // subitems are used to add additional columns in ListView
-                    item.SubItems.Add(late.MinsLate.ToString());
-                    item.SubItems.Add(late.Period.ToString());
-                    lstVLates.Items.Add(item);
+                    DisplayLates();
                 }
+                else
+                {
+                    int studentID = Convert.ToInt32(cmbStudentID.SelectedValue);
+                    var latesWithStudentName = lateRepositary.GetLatesWithStudentNames(studentID);
+                    lstVLates.Items.Clear(); // clear the ListView before adding new items
+                    foreach (var late in latesWithStudentName)
+                    {
+                        ListViewItem item = new ListViewItem(late.StudentID.ToString());
+                        item.SubItems.Add(late.FirstName + " " + late.LastName);
+                        item.SubItems.Add(late.DateOfLate.ToShortDateString()); // subitems are used to add additional columns in ListView
+                        item.SubItems.Add(late.MinsLate.ToString());
+                        item.SubItems.Add(late.Period.ToString());
+                        lstVLates.Items.Add(item);
+                    }
+                }
+
             }
             else
             {
