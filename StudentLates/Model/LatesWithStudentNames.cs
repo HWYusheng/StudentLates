@@ -14,5 +14,6 @@ namespace StudentLates.Model
         public DateTime DateOfLate { get; set; }
         public int Period { get; set; }
         public int MinsLate { get; set; }
+        public int countOfLate { get; set; }
     }
 }

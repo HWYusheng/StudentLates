@@ -42,6 +42,32 @@ namespace StudentLates
             }
             return studentsLate;
         }
+        public List<LatesWithStudentNames> GetLatesWithStudentNamesCount()
+        {
+            List<LatesWithStudentNames> studentsLate = new List<LatesWithStudentNames>();
+            string sql = "SELECT s.studentID, s.firstName, s.lastName, COUNT(*) AS [Number Of Lates] FROM (tblStudent s INNER JOIN tblLate l ON s.studentID = l.studentID) GROUP BY s.studentID, s.firstName, s.lastName";
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+            {
+                conn.Open();
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LatesWithStudentNames studentLate = new LatesWithStudentNames
+                        {
+                            StudentID = reader.GetInt32(0), // the first column is LateID
+                            FirstName = reader.GetString(1), // the second column is StudentID
+                            LastName = reader.GetString(2),
+                            countOfLate = reader.GetInt32(3)
+                        };
+                        studentsLate.Add(studentLate);
+
+                    }
+                }
+            }
+            return studentsLate;
+        }
         public int GetNumberOfLates(int studentID)
         {
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = " + Environment.CurrentDirectory + @"\sLatesDB.accdb";

@@ -99,11 +99,16 @@ namespace StudentLates
         {
             
         }
-        double average;
         private void averageLateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             double aveLate = lateRepositary.GetAverageLate();
             MessageBox.Show($"The average late mins for all students is {aveLate:N2}");
+        }
+
+        private void btnFrmReport_Click(object sender, EventArgs e)
+        {
+            FrmReport lateReport = new FrmReport();
+            lateReport.Show();
         }
     }
 }

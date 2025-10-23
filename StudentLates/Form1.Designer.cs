@@ -47,6 +47,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.averageLateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFrmReport = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,15 +196,26 @@
             // averageLateToolStripMenuItem
             // 
             this.averageLateToolStripMenuItem.Name = "averageLateToolStripMenuItem";
-            this.averageLateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.averageLateToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.averageLateToolStripMenuItem.Text = "Average Late";
             this.averageLateToolStripMenuItem.Click += new System.EventHandler(this.averageLateToolStripMenuItem_Click);
+            // 
+            // btnFrmReport
+            // 
+            this.btnFrmReport.Location = new System.Drawing.Point(16, 277);
+            this.btnFrmReport.Name = "btnFrmReport";
+            this.btnFrmReport.Size = new System.Drawing.Size(85, 23);
+            this.btnFrmReport.TabIndex = 12;
+            this.btnFrmReport.Text = "Lates Report";
+            this.btnFrmReport.UseVisualStyleBackColor = true;
+            this.btnFrmReport.Click += new System.EventHandler(this.btnFrmReport_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnFrmReport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbStudentID);
             this.Controls.Add(this.lstVLates);
@@ -244,6 +256,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem statsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem averageLateToolStripMenuItem;
+        private System.Windows.Forms.Button btnFrmReport;
     }
 }
 
