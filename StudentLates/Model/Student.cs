@@ -12,7 +12,7 @@ namespace StudentLates
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime StudentDOB { get; set; }
-        public string FullName // used for combobox display 
+        public string FullName // used for combobox display, this is readonly because there is no set
         {
             get { return $"{FirstName} {LastName}"; }
         }
